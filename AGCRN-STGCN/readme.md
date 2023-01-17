@@ -1,25 +1,32 @@
-# Adaptive Graph Convolutional Recurrent Network for Traffic Forecasting
+This folder concludes the code of origin AGCRN, origin STGCN, AGCRN with GFS and STGCN with GFS. [Adaptive Graph Convolutional Recurrent Network for Traffic Forecasting](https://arxiv.org/pdf/2007.02842.pdf) [Spatio-Temporal Graph Convolutional Networks: A Deep Learning Framework for Traffic Forecasting](https://arxiv.org/abs/1709.04875)
 
-This folder concludes the code and data of our AGCRN model: [Adaptive Graph Convolutional Recurrent Network for Traffic Forecasting](https://arxiv.org/pdf/2007.02842.pdf), which has been accepted to NeurIPS 2020. 
+PEMSD4 and PEMSD8 are available at  [ASTGCN](https://github.com/Davidham3/ASTGCN/tree/master/data). You should first download the data and place them into dir `AGCRN-STGCN/data/`.
 
-## Structure:
+## requirements
+Python 3.6, Pytorch 1.9, Numpy 1.17, argparse and configparser
 
-* data: including PEMSD4 and PEMSD8 dataset used in our experiments, which are released by and available at  [ASTGCN](https://github.com/Davidham3/ASTGCN/tree/master/data).
+## how to play
+To replicate the results on PEMSD4 and PEMSD8 datasets, you should run the following commands in the "model" folder. 
 
-* lib: contains self-defined modules for our work, such as data loading, data pre-process, normalization, and evaluate metrics.
+## STGCN
+To replicate the results of STGCN with different adjacency matrices, run
+```
+python Run.py --model STGCN --adj_type I --use_ln True --device cuda:0
+```
+You can change `adj_type` according to commands in `stgcn.sh`.
+To see the performance of STGCN with GFS, you can run
+```
+python Run.py --model STGCN --graph_conv_type origin --device cuda:0
+```
+Also, you may test variants of GFS according the commands in `stgcn.sh`
 
-* model: implementation of our AGCRN model
+## AGCRN
+The code of AGCRN with different adjacency matrices is dirty, see line 5 to line 38 in `AGCN.py`. You can replace code of `class AVWGCN` with commented lines from line 12 to line 38 and select an adj_mx from line 5 to line 10. Then run
+```
+python Run.py --model AGCRN --origin True --device cuda:0
+```
 
-
-## Requirements
-
-Python 3.6.5, Pytorch 1.1.0, Numpy 1.16.3, argparse and configparser
-
-
-
-To replicate the results in PEMSD4 and PEMSD8 datasets, you can run the the codes in the "model" folder directly. If you want to use the model for your own datasets, please load your dataset by revising "load_dataset" in the "lib" folder and remember tuning the learning rate (gradient norm can be used to facilitate the training).
-
-Please cite our work if you find useful.
-
-
-
+To test the performance of AGCRN with GFS, you can run
+```
+python Run.py --model AGCRN --device cuda:0
+```
