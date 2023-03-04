@@ -1,2 +1,2 @@
-# vldb_gsf
-The code of our paper will be uploaded step by step to this repo.
+Code for Node Classification is in folder 'Node-Classification'
+Part of code for ST forecasting is in folder 'AGCRN-STGCN'. More coder coming soom.
