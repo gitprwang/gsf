@@ -6,7 +6,7 @@ PEMSD4 and PEMSD8 are available at  [ASTGCN](https://github.com/Davidham3/ASTGCN
 Python 3.6, Pytorch 1.9, Numpy 1.17, argparse and configparser
 
 ## how to play
-To replicate the results on PEMSD4 and PEMSD8 datasets, you should run the following commands in the "model" folder. 
+To replicate the results on PEMSD4 and PEMSD8 datasets, just run the following commands in the "model" folder. 
 
 ## STGCN
 To replicate the results of STGCN with different adjacency matrices, run
